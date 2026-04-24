@@ -2,8 +2,8 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 from sqlalchemy.orm import declarative_base
 from app.core.config import settings
 
-# Adjust the database URL to use asyncpg
-fixed_url = settings.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
+# Force SQLite for local testing without Docker running
+fixed_url = "sqlite+aiosqlite:///./docmind.db"
 
 engine = create_async_engine(fixed_url, echo=False)
 AsyncSessionLocal = async_sessionmaker(

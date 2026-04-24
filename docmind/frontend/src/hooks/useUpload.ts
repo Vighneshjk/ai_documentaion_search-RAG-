@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { UploadProgress } from '../types';
+import type { UploadProgress } from '../types';
 import { api } from '../lib/api';
 
 export function useUpload(onSuccess?: () => void) {

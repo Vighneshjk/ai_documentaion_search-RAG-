@@ -1,7 +1,6 @@
 import fitz  # PyMuPDF
 import tiktoken
 import uuid
-import asyncer # Note: asyncer to run blocking fitz code
 import asyncio
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pydantic import BaseModel

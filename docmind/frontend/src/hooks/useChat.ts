@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { ChatMessage, SourceChunk } from '../types';
+import type { ChatMessage, SourceChunk } from '../types';
 import { api } from '../lib/api';
 
 export function useChat() {

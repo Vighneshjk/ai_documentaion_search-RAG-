@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     LLM_MODEL: str = "gpt-4o"
     EMBEDDING_MODEL: str = "text-embedding-3-small"
     SECRET_KEY: str
-    CORS_ORIGINS: list[str] = ["http://localhost:5173"]
+    CORS_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:5005", "http://localhost:5006"]
 
     class Config:
         env_file = ".env"
