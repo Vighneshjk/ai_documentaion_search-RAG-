@@ -14,7 +14,7 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 
 async def validate_documents(document_ids: list[str], db: AsyncSession):
     for doc_id in document_ids:
-        query = select(Document).where(Document.id == uuid.UUID(doc_id))
+        query = select(Document).where(Document.id == doc_id)
         result = await db.execute(query)
         doc = result.scalar_one_or_none()
         if not doc:

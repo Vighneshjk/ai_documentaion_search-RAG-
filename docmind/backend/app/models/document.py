@@ -1,7 +1,6 @@
 import uuid
 import datetime
 from sqlalchemy import Column, String, Integer, DateTime, Enum
-from sqlalchemy.dialects.postgresql import UUID
 from app.db.database import Base
 import enum
 
@@ -14,7 +13,8 @@ class DocumentStatus(str, enum.Enum):
 class Document(Base):
     __tablename__ = "documents"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    # Use String for UUID — works with both SQLite and PostgreSQL
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()), index=True)
     filename = Column(String, index=True)
     original_name = Column(String)
     file_path = Column(String)

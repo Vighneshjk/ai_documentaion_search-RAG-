@@ -5,7 +5,7 @@ import uuid
 from app.models.document import DocumentStatus
 
 class DocumentResponse(BaseModel):
-    id: uuid.UUID
+    id: str
     filename: str
     original_name: str
     file_size: int

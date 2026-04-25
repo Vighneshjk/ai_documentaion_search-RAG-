@@ -17,12 +17,12 @@ class PDFMetadata(BaseModel):
 
 class PDFProcessor:
     def __init__(self):
+        self.encoding = tiktoken.get_encoding("cl100k_base")
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=settings.CHUNK_SIZE,
             chunk_overlap=settings.CHUNK_OVERLAP,
             length_function=self.count_tokens
         )
-        self.encoding = tiktoken.get_encoding("cl100k_base")
 
     def count_tokens(self, text: str) -> int:
         return len(self.encoding.encode(text))
@@ -69,8 +69,8 @@ class PDFProcessor:
         file_size = os.path.getsize(file_path)
         
         result = PDFMetadata(
-            title=metadata.get("title", ""),
-            author=metadata.get("author", ""),
+            title=metadata.get("title") or "",
+            author=metadata.get("author") or "",
             page_count=page_count,
             file_size=file_size
         )

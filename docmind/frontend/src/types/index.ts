@@ -3,8 +3,8 @@ export interface Document {
   filename: string;
   original_name: string;
   status: 'uploading' | 'processing' | 'ready' | 'failed';
-  page_count: int;
-  chunk_count: int;
+  page_count: number;
+  chunk_count: number;
   created_at: string;
   file_size: number;
 }
