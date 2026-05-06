@@ -8,12 +8,11 @@ from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_core.documents import Document as LangchainDocument
 from app.core.config import Settings, settings
 
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 def get_embeddings():
-    return OpenAIEmbeddings(
-        model=settings.EMBEDDING_MODEL,
-        openai_api_key=settings.OPENAI_API_KEY
+    return HuggingFaceEmbeddings(
+        model_name=settings.EMBEDDING_MODEL
     )
 
 class SearchResult(Dict):

@@ -3,9 +3,9 @@ from typing import List, AsyncGenerator, Dict, Any
 from app.models.schemas import ChatMessage, RAGResponse, SourceChunk
 from app.services.vector_store import VectorStoreBase, SearchResult
 from app.core.config import settings
-from openai import AsyncOpenAI
+from groq import AsyncGroq
 
-client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+client = AsyncGroq(api_key=settings.GROQ_API_KEY)
 
 class RAGChain:
     def __init__(self, vector_store: VectorStoreBase):
